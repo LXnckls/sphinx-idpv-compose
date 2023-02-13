@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8
+    volumes:
+      - database:/var/lib/mysql
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysqlroot4idpv
+  
+  server:
+    image: idpv:latest
+    volumes:
+      - ./idpv/config:/publish/Config
+      - ./idpv/hsm:/usr/local/hsm
+    container_name: idpv
+    ports:
+      - 443:5001
+    depends_on:
+      - db
+
+volumes:
+  database:
