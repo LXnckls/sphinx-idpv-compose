@@ -1,0 +1,3 @@
+sphinxcontrib-images
+sphinx-copybutton
+sphinx-tabs
