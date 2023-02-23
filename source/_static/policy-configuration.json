@@ -1,0 +1,14 @@
+{
+  "UserPinPolicy": {
+    "MaxRetries": 5,
+    "IsMustChange": false
+  },
+  "AdminPinPolicy": {
+    "MaxRetries": 5,
+    "IsMustChange": false
+  },
+  "OfflineTokenPolicy": {
+    "ValidityDurationInHours": 120,
+    "PrivateKeyExportLevel": "All"
+  }
+}

@@ -12,7 +12,7 @@ The following sections describe a standard evaluation setup for IDPV.
 Setup IDPV Server
 ------------------
 
-The following folders should exist below your Docker project root directory (``idpv-eval`` in this documentation):
+The following **folder structure** should exist below your Docker project root directory - ``idpv-eval`` in this documentation:
 
 * ``dpod`` - Only required if :ref:`Luna Cloud HSM <dpod>` is used
 * ``idpv`` - IDPV Server image and config templates
@@ -25,14 +25,14 @@ The following folders should exist below your Docker project root directory (``i
 Configure IDPV Server
 ----------------------
 
-The IDPV Server software archive contains a folder with the configuration file templates. Copy the following files to ``idpv/config`` and edit them according to the parameters collected during the ":ref:`idpv-preparation-steps`":
+The IDPV Server software archive contains a folder with the **configuration file templates**. Copy the following files to ``idpv/config`` and edit them according to the parameters collected during the ":ref:`idpv-preparation-steps`":
 
-* ``appsettings.yml`` - IDPV settings related to database, HSM/DPoD, and server interface
-* ``idp-configuration.json`` - OIDC communication and policy settings
-* ``log4net.config`` - Logging settings
-* ``policy-configuration.json`` - IDPV policy settings for the virtual cards
+* :download:`appsettings.yml <_static/appsettings.yml>` - IDPV settings related to database, HSM/DPoD, and server interface
+* :download:`idp-configuration.json <_static/idp-configuration.json>` - OIDC communication and policy settings
+* :download:`log4net.config <_static/log4net.config>` - Logging configuration
+* :download:`policy-configuration.json <_static/policy-configuration.json>` - IDPV policy settings for the virtual cards
 
-There are further details concerning the configuration options that are described in section :ref:`appendix-idpv-config` in the appendix.
+There are further details concerning the configuration options that are described in section :ref:`appendix-idpv-config` in the :ref:`appendix`.
 
 
 
@@ -41,15 +41,15 @@ Import IDPV Docker Image
 
 .. highlight:: shell-session
 
-Import IDPV Server Docker image::
+**Import** IDPV Server Docker image::
 
    $ docker load -i idprimevirtual_server_evaluation.tar.gz
 
-You can check the imported image name and version tag using the following command::
+You can **check** the imported image name and version tag using the following command::
 
    $ docker image ls
 
-To easily address the image you can add an additional tag to the imported image::
+To easily address the image you can **add an additional tag** to the imported image::
 
    $ docker image tag idprimevirtual_server_evaluation:<version> idpv:latest
 
@@ -60,7 +60,7 @@ Now you can address the image using the tag ``idpv:latest`` as it is configured 
 Run IDPV Server
 ----------------
 
-To run the IDPV Server instance in detached mode you can simply run your Docker Compose environment::
+To run the IDPV Server instance in detached mode you can simply activate your Docker Compose environment::
 
    $ docker compose up -d
 
@@ -96,8 +96,9 @@ Update IDPV Tenant Configuration
 
 Whenever you want to change any tenant setting related to the **IDP configuration** or the **virtual card policy** you need to call the ``SetupTenant update`` command::
 
-   $ setuptenant/Thales.IDPrimeVirtual.SetupTenant update -t <tenant_id>
+   $ setuptenant/Thales.IDPrimeVirtual.SetupTenant update -t <tenant_id> [-i] [-p] [-a] [-n]
 
+The parameter ``-t`` is mandatory and you can update one or more of the optional attributes.
 
 
 .. index:: Troubleshooting; Server
@@ -113,7 +114,11 @@ To troubleshoot the server you can check the following places.
 
 **IDPV Server Logs**
 
-   To review the server status you can follow last 30 lines of IDPV Server logs::
+   The log level can be defined in the :download:`log4net.config <_static/log4net.config>` file with the default set to ``INFO``. To activate **debug logging** you should set the following value (three lines)::
+
+      <param name="LevelMin" value="DEBUG"/>
+
+   To review the server logs you can follow ``-f`` the last 30 lines ``-n 30`` of IDPV Server logs::
 
       > docker logs -f -n 30 idpv
 

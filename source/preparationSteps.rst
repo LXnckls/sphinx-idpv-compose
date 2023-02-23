@@ -45,9 +45,9 @@ The following steps describe the preparation required for an IDPV evaluation set
       * Client Secret
       * Issuer URL
       * Redirect URL
-      * Key ID ('kid')
-      * Key Modulus (''n')
-      * Key Exponent ('e')
+      * Key ID ``kid``
+      * Key Modulus ``n``
+      * Key Exponent ``e``
 
 
 **Step 4: Prepare Data Base**

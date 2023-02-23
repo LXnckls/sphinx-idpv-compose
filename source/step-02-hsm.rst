@@ -19,7 +19,7 @@ IDPV Server is pre-configured with **SoftHSM**, an emulation of a Hardware Secur
    
    Also be aware that the content of the **SoftHSM only exists as long as the Container is not removed** as the HSM data exists only within the running instance!
 
-You can check the SoftHSM credentials from within the container in the following file::
+You can check the **SoftHSM credentials** from within the container in the following file::
 
    $ cat SoftHsmDetails.txt
 

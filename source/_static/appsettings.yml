@@ -1,0 +1,41 @@
+#Please note that this is a yml/yaml formated file. The format is Key: Value i.e. Key:[one space]Value. Values are not required to be Quoted i.e "Value" or 'value'
+#End of line is having LF characters instead of CR LF as in windows
+DatabaseConfig: 
+    DatabaseProvider: MySQL       # (Mandatory) Database provider name. List of supported databases are MySQL, MariaDB, PSQL, Oracle and MSSQL
+    ConnectionString: server=mysql;port=3306;user=idpvuser;password=mysqluser4idpv;database=IDPrimeVirtualServer;    #(Mandatory) Database connection string for Mysql and MariaDB is as above value
+                                  #Database connection string for MSSQL, notice there is one space between "User Id"
+                                  #server=server_ip,port\\InstanceName;Database=IDPrimeVirtualServer;User Id=mssql_user;Password=mssql_pwd;
+                                  #(Database connection string for PostgreSQL, notice there is one space between "User Id"
+                                  #server=postgresql_serverip;port=postgresql_serverport;user id=postgresql_user;password=postgresql_pwd;database=IDPrimeVirtualServer;
+                                  #(Database connection string for Oracle, notice there is one space between "User Id"
+                                  #Data Source=10.100.99.11:1521/IDPrimeVirtualServer;User Id=dbuser;Password=strongdbpwd;
+
+HSMConfig:
+    HSMProvider: SoftHSM          # (Mandatory) HSM provider name. Supported providers values(case sensitive) are 'Luna', 'Luna6', 'Dpod', 'KeySecure' and 'SoftHSM'(only for evaluation version). Note- 'KeySecure' does not support offline virtual token.   
+    TokenSerial: 3a2c9e2f0c303edc # (Mandatory) HSM partition serial number. 
+    TokenPin: temp123#            # (Mandatory) HSM crypto officer (co) pin.
+    TokenPasscode:                # (Optional)  This value is recommended for enhanced security.
+                                  # Additional passcode string value (any new value). This value will be used to change the above TokenPin by the IDPV server to take complete ownership on hsm partition.
+                                  # Once this value is set than the above hsm crypto officer pin will be changed and the hsm partition can be accessed by IDPV server only. 
+                                  # Caution !! This is one time configuration value. Any modification or changes on this value is not allowed which may lead to lock the hsm partition.
+    UserGroup:                    # Applicable only if HSMProvider value is KeySecure
+
+SWSConfig:
+    EnableSADValidation: false              #(Mandatory) This value is recommended for enhanced security while signing with SWS 'Signatures/SignHash' API.
+    EnableSWSMultiTenant: false             #(Mandatory) This value is recommended to support multi-tenant with SWS API.
+    Multisign: 5                            #(Mandatory) This value is recommended to define max number of signature allowed at a time with SWS 'Signatures/SignHash' API. The multi sign configuration value must between 1 to max 25.
+
+APIKeyExpiryInDays: 60            #In Days
+
+WebServerConfig:
+    ServerPublicUrl: https://idpv.server.com/     #(Mandatory) It is mandatory to provide the IDPV server hosting url (public or intranet) which is being accessible from client machines. 
+    TlsCertificateThumbprint: 59:FB:AB:51:B1:1D:67:98:5B:96:19:F6:FC:DF:9F:CF:C2:22:D3:FA   #(Mandatory) It is recommended to host IDPV server on Https and need to provide TLS certificate thumbprint value of certificate used below.
+    SelfServicePortalUrl: https://idpv.server.com/    #(Optional) If you're using self service portal, provide the public base URL of self service portal accessible from client machines.
+
+Kestrel:    # It is recommended to configure Https settings.
+  EndPoints:
+    Https:
+      Url: https://*:5001
+      Certificate:
+        Path: /publish/Config/idpv.pfx   #(Mandatory) Update only the name of file here. (i.e. filename) /publish/Config part is fixed. 
+        Password: cert4idpv   #(Mandatory) Password for the above mentioned pfx file

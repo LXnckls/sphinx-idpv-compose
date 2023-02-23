@@ -1,0 +1,18 @@
+{
+"IdentityProvider": "STA",
+"IdpPublicKeyModulus":"y1nA5wvYoTlIPyPxjO62soODuJms96CrNp9UqJIcr0ebY6seW1lGY1zcZ3qdHUtoCFWS0gD7RBdbWjRkHzQEH8s5dkPrTZrjmeQ6yhhKZ3pxwIhkosZBZvsImgExzc0Z1u0ziNJwbMEpIH2jOiOh8-zBtb0xSmqpQ_g0P3uctfXHptEIUEhri4tt6sPg6-LOfVXIyNdWozjprXSJWQ3iW6jwO2dP5JSblucrta-ZnPLomQszalrb-Emzxcs8RKdIzq5jh9Z-Cnejoe1fEHbgHaTwhPZxMD6Oi0BJiBs8Obdjs3OX4raGg04z_2B61T_vMZKIVyYVuO3m-fwWt58d6Q",
+"IdpPublicKeyExponent":"AQAB",
+"IdpKeyId":"oM-ZMH1nmbkqHCqQQBB9kwp1Bv4FiJZhNDLXGnKaCCg",
+"IdpClientId":"dbd123f2-3267-4986-aca0-4c8945dc4ce0",
+"IdpIssuerUrl":"https://idp.eu.safenetid.com/auth/realms/D92SXU0YZP-STA",
+"IdpRedirectUrl": "https://idpv.server.com/redirect",
+"RefreshTokenExpirationDuration": "480",
+"JwtExpiration": "0000001e",
+"JwtGroupClaim":"Groups",
+"JwtUserClaim":"preferred_username",
+"JwtAdminWhiteList":"",
+"IDPrimeVirtualAdmin":"IDPV_Admins",
+"IDPrimeVirtualUser":"IDPV_Users",
+"OfflineTokenEnabledGroup":"IDPV_OfflineEnabled",
+"IDPrimeVirtualProvisioningAdmin": "IDPV_ProvAdmins"
+}

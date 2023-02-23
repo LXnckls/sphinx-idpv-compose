@@ -58,11 +58,11 @@ Some IDPV Server configuration parameters are not exposed to the external ``apps
 
    $ more appsettings.json
 
-So e.g. to change the runtime value of the API Key Expiry (default is 30 days) you could execute this command within the Container::
+So e.g. to **change the runtime value** of the API Key Expiry (default is 30 days) you could execute this command within the Container::
 
    $ sed -i 's|/"APIKeyExpiryInDays\": .*|/"APIKeyExpiryInDays/": 60,   //In Days |g' appsettings.json
 
-As this change will only persist as long as the container exists you could add the parameter also to the ``appsettings.yml`` file by adding the following line::
+As this change will only persist as long as the container exists you could also set the parameter in the ``appsettings.yml`` file by adding the following line::
 
    APIKeyExpiryInDays: 60            #In Days
 

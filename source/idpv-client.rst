@@ -6,15 +6,26 @@ Install IDPV Client
 ====================
 
 
-Connect IDPV Client
+Setup IDPV Client
 --------------------
 
-IDPV Client Registry Key::
+To setup the client components on Windows 10/11 you have to install:
 
-   HKLM\SOFTWARE\WOW6432Node\Thales\SafeNet IDPrime Virtual
+* **SafeNet Authentication Client (SAC)**
 
+  Choose the **Minidriver Profile** unless you have specific other requirements
 
-.. index:: Troubleshooting; Client
+* **[Alternatively] SafeNet Minidriver**
+
+  It provides the necessary middleware libraries but only provides a minimal user interface compared to SAC
+
+* **IDPrime Virtual Client**
+
+  Install the client that is part of the IDPV software package. You need the following **configuration parameters** for the installation:
+
+    * IDPrime Virtual Server URL
+    * Tenant ID
+    * Optional: Proxy
 
 
 
@@ -25,9 +36,11 @@ The IDPV Client config is stored in the **Windows Registry**::
 
    HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Thales\SafeNet IDPrime Virtual
 
-.. note:: If you change the **IDPV tenant** entry you have to exit the IDPV Client tool, restart the service "SafeNet IDPrime Virtual" and start "SafeNet IDPrime Virtual" app again.
+.. note:: If you change the **IDPV tenant** entry in the Registry you have to exit the IDPV Client tool, restart the service "SafeNet IDPrime Virtual" and start IDPV Client again.
 
 
+
+.. index:: Troubleshooting; Client
 
 Troubleshooting
 ----------------
